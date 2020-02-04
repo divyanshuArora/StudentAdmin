@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.AddStudents">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:fitsSystemWindows="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:background="#ffffff"
+                        android:elevation="@dimen/_7sdp"
+                        android:fitsSystemWindows="true"
+                        android:gravity="center"
+                        android:minHeight="?attr/actionBarSize"
+                        app:contentInsetEnd="0dp"
+                        app:contentInsetStart="0dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Student Registration"
+                            android:textColor="#000000"
+                            android:textSize="@dimen/_14ssp" />
+
+
+                    </androidx.appcompat.widget.Toolbar>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_120sdp"
+                        android:layout_marginTop="@dimen/_10sdp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/customerProfileImg"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:src="@drawable/boy_icon"
+                            app:civ_border_color="#f0f0f0"
+                            app:civ_border_width="@dimen/_1sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="140dp"
+                            android:src="@drawable/ic_edit"
+                            app:layout_constraintBottom_toTopOf="@+id/customerProfileImg"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/studentNameLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:padding="@dimen/_5sdp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/studentName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Student Name"
+                            android:textSize="@dimen/_12ssp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/dateLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:padding="@dimen/_5sdp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/studentDob"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Select DOB"
+                            android:textSize="@dimen/_12ssp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/mothersNameLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:padding="@dimen/_5sdp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/studentMotherName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Mother's Name"
+                            android:textSize="@dimen/_12ssp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/fatherNameLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:padding="@dimen/_5sdp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/studentFatherName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Father's Name"
+                            android:textSize="@dimen/_12ssp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="#ffffff"
+                    android:elevation="@dimen/_8sdp"
+                    android:text="Register"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/_14ssp" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+</layout>
