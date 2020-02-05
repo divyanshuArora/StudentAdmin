@@ -238,7 +238,7 @@ class AddStudentsFragment(color: Int) : Fragment() {
         }
     }
 
-
+////////
     private fun setDataIntoDB()
     {
         var insertStudentDetails = databaseHelper!!.insertStudents(studentName,studentImage,studentFatherName,studentMotherName)
