@@ -1,8 +1,10 @@
 package com.divyanshu.studentadmin.fragments
 
 import android.Manifest
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -15,6 +17,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -86,7 +89,7 @@ class AddStudentsFragment(color: Int) : Fragment() {
             }
 
         fragmentAddStudentsBinding!!.register.setOnClickListener {
-
+            hideKeyboard(context!!)
             registerStudent()
         }
 
@@ -188,7 +191,9 @@ class AddStudentsFragment(color: Int) : Fragment() {
 
 
 
-    private fun registerStudent() {
+    private fun registerStudent()
+    {
+
         studentName = fragmentAddStudentsBinding!!.studentName.text.toString()
         stuentDob = fragmentAddStudentsBinding!!.studentDob.text.toString()
         studentFatherName = fragmentAddStudentsBinding!!.studentFatherName.text.toString()
@@ -291,6 +296,15 @@ class AddStudentsFragment(color: Int) : Fragment() {
         }
     }
 
+
+    fun hideKeyboard(context: Context) {
+        val inputManager = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val v = activity!!.getCurrentFocus()
+        if (v == null)
+            return;
+        inputManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+    }
 
 
 
