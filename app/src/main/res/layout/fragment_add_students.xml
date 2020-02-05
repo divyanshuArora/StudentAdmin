@@ -11,6 +11,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/mainLayout"
             android:fillViewport="true"
             android:fitsSystemWindows="true">
 
@@ -55,7 +56,7 @@
                         android:layout_marginTop="@dimen/_10sdp">
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/customerProfileImg"
+                            android:id="@+id/studentProfileImg"
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="@dimen/_80sdp"
                             android:src="@drawable/boy_icon"
@@ -67,13 +68,13 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/imageView"
+                            android:id="@+id/imageViewEdit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:layout_marginEnd="140dp"
                             android:src="@drawable/ic_edit"
-                            app:layout_constraintBottom_toTopOf="@+id/customerProfileImg"
+                            app:layout_constraintBottom_toTopOf="@+id/studentProfileImg"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="1.0"
                             app:layout_constraintStart_toStartOf="parent"
@@ -97,6 +98,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Enter Student Name"
+                            android:singleLine="true"
                             android:textSize="@dimen/_12ssp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,6 +117,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Select DOB"
+                            android:singleLine="true"
                             android:textSize="@dimen/_12ssp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,6 +136,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Enter Mother's Name"
+                            android:singleLine="true"
                             android:textSize="@dimen/_12ssp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -150,6 +154,7 @@
                             android:id="@+id/studentFatherName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:singleLine="true"
                             android:hint="Enter Father's Name"
                             android:textSize="@dimen/_12ssp" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -159,9 +164,14 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
-                    android:background="#ffffff"
+                    android:id="@+id/register"
+                    android:layout_marginBottom="@dimen/_50sdp"
+                    android:background="@drawable/button_shape"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
                     android:elevation="@dimen/_8sdp"
                     android:text="Register"
+                    android:textColor="#E60808"
                     android:textAllCaps="false"
                     android:textSize="@dimen/_14ssp" />
 
