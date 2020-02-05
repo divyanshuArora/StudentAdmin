@@ -179,7 +179,7 @@ class AddStudentsFragment(color: Int) : Fragment() {
             Log.e("CustomerProfile:", "BASE64capture" + studentImage)
         }
     }
-
+//////////
     private fun registerStudent() {
         studentName = fragmentAddStudentsBinding!!.studentName.text.toString()
         stuentDob = fragmentAddStudentsBinding!!.studentDob.text.toString()
