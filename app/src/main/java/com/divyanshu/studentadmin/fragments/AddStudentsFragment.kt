@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -22,6 +24,7 @@ import com.bumptech.glide.Glide
 
 import com.divyanshu.studentadmin.R
 import com.divyanshu.studentadmin.databinding.FragmentAddStudentsBinding
+import com.divyanshu.studentadmin.utils.DatabaseHelper
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_add_students.*
 import org.jetbrains.anko.toast
@@ -43,6 +46,7 @@ class AddStudentsFragment(color: Int) : Fragment() {
     var PERMISSION_ALL = 1888
     var difference:Long ?= null
     var seconds:Long ?= null
+    var databaseHelper: DatabaseHelper?= null
     var permissions = arrayOf(
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
         Manifest.permission.CAMERA,
@@ -86,6 +90,8 @@ class AddStudentsFragment(color: Int) : Fragment() {
             registerStudent()
         }
 
+
+        databaseHelper  = DatabaseHelper(context)
         getCurrentDate()
         return fragmentAddStudentsBinding!!.root
     }
@@ -169,17 +175,19 @@ class AddStudentsFragment(color: Int) : Fragment() {
             val stream = ByteArrayOutputStream()
             thumbnail.compress(Bitmap.CompressFormat.JPEG, 50, stream)
             //customerProfileImg!!.setImageBitmap(thumbnail)
-
             Glide.with(context!!).load(data.data)
                 .into(fragmentAddStudentsBinding!!.studentProfileImg)
 
-            val array = stream.toByteArray()
-            studentImage = Base64.encodeToString(array, Base64.DEFAULT).trim()
+//            val array = stream.toByteArray()
+//            studentImage = Base64.encodeToString(array, Base64.DEFAULT).trim()
 
+            studentImage = thumbnail.toString()
             Log.e("CustomerProfile:", "BASE64capture" + studentImage)
         }
     }
-//////////
+
+
+
     private fun registerStudent() {
         studentName = fragmentAddStudentsBinding!!.studentName.text.toString()
         stuentDob = fragmentAddStudentsBinding!!.studentDob.text.toString()
@@ -221,9 +229,29 @@ class AddStudentsFragment(color: Int) : Fragment() {
         }
         else
         {
-            activity!!.toast("Registered")
+            setDataIntoDB()
         }
     }
+
+
+    private fun setDataIntoDB()
+    {
+        var insertStudentDetails = databaseHelper!!.insertStudents(studentName,studentImage,studentFatherName,studentMotherName)
+
+        if (insertStudentDetails == true) {
+        //    showSnackar("Student Details Added Successfully")
+            showPop()
+            fragmentAddStudentsBinding!!.studentName.text!!.clear()
+            fragmentAddStudentsBinding!!.studentFatherName.text!!.clear()
+            fragmentAddStudentsBinding!!.studentMotherName.text!!.clear()
+            fragmentAddStudentsBinding!!.studentDob.text!!.clear()
+            studentImage = ""
+
+        } else {
+            showSnackar("Student Details Added Failed")
+        }
+    }
+
 
 
     private fun showSnackar(error:String)
@@ -248,4 +276,23 @@ class AddStudentsFragment(color: Int) : Fragment() {
             Log.d("answer", answer)
         }
     }
+
+    private fun showPop() {
+
+        var customView = LayoutInflater.from(context).inflate(R.layout.dialog_box, null)
+        var builder = AlertDialog.Builder(context)
+            .setView(customView)
+
+        var mAlert = builder.show()
+        val ok = customView.findViewById(R.id.alertOk) as Button
+        ok.setOnClickListener {
+
+            mAlert.dismiss()
+        }
+    }
+
+
+
+
+
 }
